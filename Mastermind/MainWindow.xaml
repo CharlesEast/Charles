@@ -1,0 +1,51 @@
+﻿<Window x:Class="Mastermind.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mastermind" Height="409" Width="249">
+    <Grid>
+        <TextBox x:Name="txtGuessOne" HorizontalAlignment="Left" Height="36" Margin="10,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" FontSize="24" TextAlignment="Center" TextChanged="txtGuessOne_TextChanged" PreviewTextInput="NumericOnly" Text="{Binding xxx.yyyy}" MaxLength="1"/>
+        <TextBox x:Name="txtGuessTwo" HorizontalAlignment="Left" Height="36" Margin="66,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" FontSize="24" TextAlignment="Center" TextChanged="txtGuessTwo_TextChanged" PreviewTextInput="NumericOnly" Text="{Binding xxx.yyyy}" MaxLength="1"/>
+        <TextBox x:Name="txtGuessThree" HorizontalAlignment="Left" Height="36" Margin="121,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" FontSize="24" TextAlignment="Center" TextChanged="txtGuessThree_TextChanged" PreviewTextInput="NumericOnly" Text="{Binding xxx.yyyy}" MaxLength="1"/>
+        <TextBox x:Name="txtGuessFour" HorizontalAlignment="Left" Height="36" Margin="176,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41" FontSize="24" TextAlignment="Center" PreviewTextInput="NumericOnly" Text="{Binding xxx.yyyy}" MaxLength="1" TextChanged="txtGuessFour_TextChanged"/>
+        <Button x:Name="btnSubmit" Content="Guess" HorizontalAlignment="Left" Margin="35,343,0,0" VerticalAlignment="Top" Width="157" Height="25" Click="btnSubmit_Click"/>
+
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" FontSize="36" Margin="10,230,0,0" VerticalAlignment="Top"/>
+        
+        <Label x:Name="lblGuessOne1" HorizontalAlignment="Left" Margin="18,22,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessTwo1" HorizontalAlignment="Left" Margin="75,22,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessThree1" HorizontalAlignment="Left" Margin="129,22,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessFour1" HorizontalAlignment="Left" Margin="185,22,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblSymbolOne1" Content="" HorizontalAlignment="Left" Margin="43,22,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolTwo1" Content="" HorizontalAlignment="Left" Margin="99,22,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolThree1" Content="" HorizontalAlignment="Left" Margin="153,22,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolFour1" Content="" HorizontalAlignment="Left" Margin="207,22,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+
+        <Label x:Name="lblGuessOne2" HorizontalAlignment="Left" Margin="18,62,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessTwo2" HorizontalAlignment="Left" Margin="75,62,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessThree2" HorizontalAlignment="Left" Margin="129,62,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessFour2" HorizontalAlignment="Left" Margin="185,62,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblSymbolOne2" Content="" HorizontalAlignment="Left" Margin="43,62,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolTwo2" Content="" HorizontalAlignment="Left" Margin="99,62,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolThree2" Content="" HorizontalAlignment="Left" Margin="153,62,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolFour2" Content="" HorizontalAlignment="Left" Margin="207,62,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+
+        <Label x:Name="lblGuessOne3" HorizontalAlignment="Left" Margin="18,102,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessTwo3" HorizontalAlignment="Left" Margin="75,102,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessThree3" HorizontalAlignment="Left" Margin="129,102,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessFour3" HorizontalAlignment="Left" Margin="185,102,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblSymbolOne3" Content="" HorizontalAlignment="Left" Margin="43,102,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolTwo3" Content="" HorizontalAlignment="Left" Margin="99,102,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolThree3" Content="" HorizontalAlignment="Left" Margin="153,102,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolFour3" Content="" HorizontalAlignment="Left" Margin="207,102,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+
+        <Label x:Name="lblGuessOne4" HorizontalAlignment="Left" Margin="18,141,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessTwo4" HorizontalAlignment="Left" Margin="75,141,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessThree4" HorizontalAlignment="Left" Margin="129,141,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblGuessFour4" HorizontalAlignment="Left" Margin="185,141,0,0" VerticalAlignment="Top" Width="24" Height="38" FontSize="24"/>
+        <Label x:Name="lblSymbolOne4" Content="" HorizontalAlignment="Left" Margin="43,141,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolTwo4" Content="" HorizontalAlignment="Left" Margin="99,141,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolThree4" Content="" HorizontalAlignment="Left" Margin="153,141,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+        <Label x:Name="lblSymbolFour4" Content="" HorizontalAlignment="Left" Margin="207,141,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
+
+    </Grid>
+</Window>

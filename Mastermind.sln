@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind", "Mastermind\Mastermind.csproj", "{750DB5B2-0078-477D-9F59-FCB73C28056D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindLogic", "MastermindLogic\MastermindLogic.csproj", "{24EACCC5-6868-4770-83D9-2D3DDC2A3288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindUnitTests", "MastermindUnitTests\MastermindUnitTests.csproj", "{5B84343A-953E-4E17-9121-3FF027861773}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{750DB5B2-0078-477D-9F59-FCB73C28056D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750DB5B2-0078-477D-9F59-FCB73C28056D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750DB5B2-0078-477D-9F59-FCB73C28056D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750DB5B2-0078-477D-9F59-FCB73C28056D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24EACCC5-6868-4770-83D9-2D3DDC2A3288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24EACCC5-6868-4770-83D9-2D3DDC2A3288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24EACCC5-6868-4770-83D9-2D3DDC2A3288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24EACCC5-6868-4770-83D9-2D3DDC2A3288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B84343A-953E-4E17-9121-3FF027861773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B84343A-953E-4E17-9121-3FF027861773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B84343A-953E-4E17-9121-3FF027861773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B84343A-953E-4E17-9121-3FF027861773}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
