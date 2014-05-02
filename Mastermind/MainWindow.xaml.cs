@@ -22,16 +22,23 @@ namespace Mastermind
     public partial class MainWindow : Window
     {
         Answer correctAnswer;
-        int answerCount = 0;
+        int answerCount;
 
         public MainWindow()
         {
             InitializeComponent();
             StartNewGame();
-            BlankLabels();
         }
 
-        private void BlankLabels()
+        private void BlankInputs()
+        {
+            txtGuessOne.Text = String.Empty;
+            txtGuessTwo.Text = String.Empty;
+            txtGuessThree.Text = String.Empty;
+            txtGuessFour.Text = String.Empty;
+        }
+
+        private void BlankDisplay()
         {
             for (int x = 1; x <= 4; x++)
             {
@@ -63,7 +70,7 @@ namespace Mastermind
                 int[] userAnswer = GetInput();
                 correctAnswer.ProcessAnswer(userAnswer);
                 ShowGuessesAndStatus(userAnswer);
-                BlankTextBoxes();
+                BlankInputs();
                 txtGuessOne.Focus();
                 DisplayResults(userAnswer);
             }
@@ -75,17 +82,9 @@ namespace Mastermind
             btnSubmit.Content = "Guess";
             correctAnswer = new Answer(4);
             correctAnswer.GenerateRandomAnswer();
-            BlankTextBoxes();
-            BlankLabels();
+            BlankInputs();
+            BlankDisplay();
             txtGuessOne.Focus();
-        }
-
-        private void BlankTextBoxes()
-        {
-            txtGuessOne.Text = String.Empty;
-            txtGuessTwo.Text = String.Empty;
-            txtGuessThree.Text = String.Empty;
-            txtGuessFour.Text = String.Empty;
         }
 
         private string GetStatusSymbol(AnswerDigit.Status status)

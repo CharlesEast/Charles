@@ -27,37 +27,8 @@ namespace MastermindUnitTests
             Answer answer = new Answer(4);
             answer.GenerateRandomAnswer();
 
-            int lastRandomNumber = answer.AnswerDigits[answer.AnswerDigits.Length - 1].Number;
+            int lastRandomNumber = answer.AnswerDigits[answer.AnswerDigits.Count - 1].Number;
             Assert.That(lastRandomNumber,Is.GreaterThan(0).And.LessThan(10), "Last answer number does not contain a number.");
-        }
-
-        [Test]
-        public void NumberIsAlreadyUsed()
-        {
-            Answer answer = new Answer(3);
-            answer.AnswerDigits[0] = new AnswerDigit();
-            answer.AnswerDigits[0].Number = 1;
-            answer.AnswerDigits[1] = new AnswerDigit();
-            answer.AnswerDigits[1].Number = 2;
-            Assert.That(answer.IsAlreadyUsed(1, 1), "Numbers already in use are not being identified.");
-        }
-
-        [Test]
-        public void NumberIsAvailable()
-        {
-            Answer answer = new Answer(3);
-            answer.AnswerDigits[0] = new AnswerDigit();
-            answer.AnswerDigits[0].Number = 1;
-            answer.AnswerDigits[1] = new AnswerDigit();
-            answer.AnswerDigits[1].Number = 2;
-            Assert.IsFalse(answer.IsAlreadyUsed(4, 1), "Numbers which are available are not being identified.");
-        }
-
-        [Test]
-        public void PrepopulateAnswer()
-        {
-            Answer answer = new Answer(3,new int[]{1,2,3});
-            Assert.That(answer.ToString() == "123", "Answer is not prepopulated correctly.");
         }
 
         [Test]

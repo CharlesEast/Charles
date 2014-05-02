@@ -8,17 +8,13 @@ namespace MastermindLogic
 {
     public class Answer
     {
-        private AnswerDigit[] _answerDigits;
-
-        public AnswerDigit[] AnswerDigits
-        {
-            get { return _answerDigits; }
-            set { _answerDigits = value; }
-        }
+        private readonly int numberOfAnswerDigits;
+        public IList<AnswerDigit> AnswerDigits { get; set; }
 
         public Answer(int numberOfAnswerDigits)
         {
-            _answerDigits = new AnswerDigit[numberOfAnswerDigits];
+            this.numberOfAnswerDigits = numberOfAnswerDigits;
+            AnswerDigits = new AnswerDigit[numberOfAnswerDigits];
         }
 
         /// <summary>
@@ -26,16 +22,9 @@ namespace MastermindLogic
         /// </summary>
         /// <param name="numberOfAnswerDigits"></param>
         /// <param name="generatedAnswer"></param>
-        public Answer(int numberOfAnswerDigits, int[] generatedAnswer)
+        public Answer(int numberOfAnswerDigits, IEnumerable<int> generatedAnswer)
         {
-            _answerDigits = new AnswerDigit[numberOfAnswerDigits];
-            int currentAnswerDigits = 0;
-
-            foreach (int answerDigit in generatedAnswer)
-            {
-                _answerDigits[currentAnswerDigits] = new AnswerDigit(answerDigit);
-                currentAnswerDigits++;
-            }
+            AnswerDigits = generatedAnswer.Select(i => new AnswerDigit(i)).Take(numberOfAnswerDigits).ToList();
         }
 
         /// <summary>
@@ -43,32 +32,7 @@ namespace MastermindLogic
         /// </summary>
         public void GenerateRandomAnswer()
         {
-            for (int currentAnswerDigit = 0; currentAnswerDigit < _answerDigits.Length; currentAnswerDigit++)
-            {
-                _answerDigits[currentAnswerDigit] = new AnswerDigit();
-                do
-                {
-                    _answerDigits[currentAnswerDigit].GenerateRamdomNumber();
-                } while (IsAlreadyUsed(_answerDigits[currentAnswerDigit].Number, currentAnswerDigit));
-            }
-        }
-
-        /// <summary>
-        /// Check if an answer number is already in use within the collection of answer numbers.
-        /// </summary>
-        /// <param name="number"></param>
-        /// <param name="lastAnswerDigitPopulated"></param>
-        /// <returns></returns>
-        public bool IsAlreadyUsed(int number, int lastAnswerDigitPopulated)
-        {
-            for (int currentAnswerDigit = 0; currentAnswerDigit < lastAnswerDigitPopulated; currentAnswerDigit++)
-            {
-                if (number == _answerDigits[currentAnswerDigit].Number)
-                {
-                    return true;
-                }
-            }
-            return false;
+            AnswerDigits = new RandomAnswerGenerator().GenerateRandomAnswers(numberOfAnswerDigits);
         }
 
         /// <summary>
@@ -78,14 +42,7 @@ namespace MastermindLogic
         /// <returns></returns>
         public bool IsInAnswer(int number)
         {
-            for (int currentAnswerDigit = 0; currentAnswerDigit < _answerDigits.Length; currentAnswerDigit++)
-            {
-                if (_answerDigits[currentAnswerDigit].Number == number)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return AnswerDigits.Any(t => t.Number == number);
         }
 
         /// <summary>
@@ -95,14 +52,7 @@ namespace MastermindLogic
         /// <returns></returns>
         public bool IsMatch(int[] userInput)
         {
-            for (int currentAnswerDigit = 0; currentAnswerDigit < _answerDigits.Length; currentAnswerDigit++)
-            {
-                if (!_answerDigits[currentAnswerDigit].Matches(userInput[currentAnswerDigit]))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return !AnswerDigits.Where((t, currentAnswerDigit) => !t.Matches(userInput[currentAnswerDigit])).Any();
         }
 
         /// <summary>
@@ -111,24 +61,31 @@ namespace MastermindLogic
         /// <param name="userInput"></param>
         public void ProcessAnswer(int[] userInput)
         {
-            for (int currentAnswerDigits = 0; currentAnswerDigits < _answerDigits.Length; currentAnswerDigits++)
+            for (int currentAnswerDigits = 0; currentAnswerDigits < AnswerDigits.Count; currentAnswerDigits++)
             {
-                int currentInput = userInput[currentAnswerDigits];
-
-                if (_answerDigits[currentAnswerDigits].Matches(currentInput))
-                {
-                    _answerDigits[currentAnswerDigits].MatchStatus = AnswerDigit.Status.Match;
-                }
-                else if (IsInAnswer(currentInput))
-                {
-                    _answerDigits[currentAnswerDigits].MatchStatus = AnswerDigit.Status.WrongPosition;
-                }
-                else
-                {
-                    _answerDigits[currentAnswerDigits].MatchStatus = AnswerDigit.Status.Nonmatch;
-                }
+                AnswerDigit answerDigit = AnswerDigits[currentAnswerDigits];
+                answerDigit.MatchStatus = MatchInputAtCurrentPosition(answerDigit, userInput[currentAnswerDigits]);
             }
         }
 
+        private AnswerDigit.Status MatchInputAtCurrentPosition(AnswerDigit answerDigit, int currentInput)
+        {
+            if (answerDigit.Matches(currentInput))
+            {
+                return AnswerDigit.Status.Match;
+            }
+
+            if (IsInAnswer(currentInput))
+            {
+                return AnswerDigit.Status.WrongPosition;
+            }
+
+            return AnswerDigit.Status.Nonmatch;
+        }
+
+        public override string ToString()
+        {
+            return string.Join("", AnswerDigits.Select(digit => digit.ToString()).ToArray());
+        }
     }
 }

@@ -15,33 +15,24 @@ namespace MastermindLogic
             WrongPosition
         }
 
-        private int _number;
-        private Status _matchStatus = new Status();
+        public int Number { get; set; }
 
-        public int Number
-        {
-            get { return _number; }
-            set { _number = value; }
-        }
+        public Status MatchStatus { get; set; }
 
-        public Status MatchStatus
-        {
-            get { return _matchStatus; }
-            set { _matchStatus = value; }
-        }
-        
         public AnswerDigit()
         {
+            MatchStatus = new Status();
         }
 
         public AnswerDigit(int number)
         {
-            _number = number;
+            MatchStatus = new Status();
+            Number = number;
         }
 
         public bool Matches(int guess)
         {
-            return _number == guess;
+            return Number == guess;
         }
 
         /// <summary>
@@ -49,7 +40,19 @@ namespace MastermindLogic
         /// </summary>
         public void GenerateRamdomNumber()
         {
-            _number = new Random((int)DateTime.Now.Ticks & 0x0000FFFF).Next(1, 9);
+            Number = new Random((int) DateTime.Now.Ticks & 0x0000FFFF).Next(1, 9);
+        }
+
+        public static AnswerDigit GenerateRamdomAnswerDigit()
+        {
+            var digit = new AnswerDigit();
+            digit.GenerateRamdomNumber();
+            return digit;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", Number);
         }
     }
 }
